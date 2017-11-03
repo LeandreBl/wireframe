@@ -26,6 +26,10 @@ SRCS		+= src/arrows.c
 SRCS		+= src/shortcuts.c
 SRCS		+= src/page.c
 SRCS		+= src/change_proj.c
+SRCS		+= src/init_frame.c
+SRCS		+= src/menu.c
+SRCS		+= src/menu_draw_line.c
+SRCS		+= src/menu_preview.c
 
 OBJ		= $(SRCS:.c=.o)
 

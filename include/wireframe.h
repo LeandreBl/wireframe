@@ -13,6 +13,7 @@
 # define NB_PROJ	(2)
 # define PARA_PROJ	(0)
 # define ISO_PROJ	(1)
+# define FONT		("fonts/audims.ttf")
 
 # include "csfml.h"
 
@@ -34,6 +35,21 @@ struct			frame_s
   int			disp_view;
 };
 
+struct			folder_s
+{
+  const char		*folder;
+  char			**filenames;
+  int			size;
+};
+
+struct			preview_s
+{
+  int			width;
+  int			height;
+  sfUint8		*pixels;
+  t_sprite		sprite;
+};
+
 # define SHORTCUTS	(7)
 
 struct			fct_s
@@ -42,18 +58,29 @@ struct			fct_s
   void			(*fction)(struct frame_s *frame);
 };
 
+typedef struct preview_s preview_t;
 typedef struct line_s line_t;
 typedef struct frame_s frame_t;
 typedef struct fct_s fct_t;
+typedef struct folder_s folder_t;
 
-void		free_dots(frame_t *frame);
-void		free_frame(frame_t *frame);
+int		create_frames(frame_t **frames, folder_t *folder);
+void		init_frame_settings(frame_t *frame);
+void		free_frames(frame_t *frame, int size);
 int		parse_file(char **file, frame_t *frame);
 sfVector2f	my_para_proj(sfVector3f pos3d, float angle);
 sfVector2f	my_iso_proj(sfVector3f pos3d);
 int		fill_3d_coordinates(frame_t *frame);
 int		display_wireframe(t_window *window, frame_t *frame);
+int		display_preview(t_window *window, preview_t *preview,
+				frame_t *frame);
+void		menu_line(preview_t *preview, sfVector2f from,
+			  sfVector2f to, sfColor color);
+int		menu(t_window *window, frame_t *frame, folder_t *folder);
 void		key_shortcuts(frame_t *frame);
+void		move_menu_cursor(int *cur, int max);
+void		free_menu(preview_t *preview, t_sprite *background,
+			  t_sprite *cursor);
 
 /* Function pointers */
 void		up_key(frame_t *frame);

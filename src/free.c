@@ -36,3 +36,26 @@ void		free_frame(frame_t *frame)
   }
   sfree(&frame->lines);
 }
+
+void		free_frames(frame_t *frames, int size)
+{
+  int		i;
+
+  i = 0;
+  while (i < size)
+  {
+    free_frame(&frames[i]);
+    ++i;
+  }
+  sfree(&frames);
+}
+
+void		free_menu(preview_t *preview,
+			  t_sprite *background, t_sprite *cursor)
+{
+  free_sprite(cursor);
+  free_sprite(background);
+  sfree(&preview->pixels);
+  sfSprite_destroy(preview->sprite.sprite);
+  sfTexture_destroy(preview->sprite.texture);
+}

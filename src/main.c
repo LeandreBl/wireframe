@@ -14,29 +14,22 @@
 int		main(int ac, char **av)
 {
   t_window	*window;
-  char		**file;
-  frame_t	frame;
+  folder_t	folder;
+  frame_t	*frames;
 
   if (ac != 2)
-    return (mdprintf(2, "%sUsage\n\t./wireframe file.wf\n%s", BOLDGREEN, RESET));
+    return (mdprintf(2, "%sUsage\n\t./wireframe file.wf\n%s",
+		     BOLDGREEN, RESET));
   window = init_window(720, 16.0 / 9.0, NULL, 0);
   if (window == NULL)
     return (-1);
-  file = load_file(av[1]);
-  if (file == NULL)
-  {
-    mdprintf(2, "%sError : Could not open %s\n%s", BOLDRED, av[1], RESET);
-    return (-1);
-  }
-  if (parse_file(file, &frame) == -1)
-  {
-    mdprintf(2, "%sError : Could not parse %s%s\n", BOLDRED, av[1], RESET);
-    free_window(window);
-    free_tab(&file);
-  }
-  display_wireframe(window, &frame);
-  free_frame(&frame);
+  window->font = my_strdup(FONT);
+  folder.folder = av[1];
+  if (create_frames(&frames, &folder) == -1)
+    mdprintf(2, "%sError : Could not create frames%s\n", BOLDRED, RESET);
+  menu(window, frames, &folder);
+  free_frames(frames, folder.size);
+  free_tab(&folder.filenames);
   free_window(window);
-  free_tab(&file);
   return (0);
 }

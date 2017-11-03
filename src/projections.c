@@ -25,7 +25,7 @@ sfVector2f	my_iso_proj(sfVector3f pos3d)
 
   angle = 30 * M_PI / 180;
   point.x = (cos(angle) * (pos3d.x - pos3d.y));
-  point.y = 1/sqrt(6) * (pos3d.x + pos3d.y) - sqrt_2_3 * pos3d.z;
+  point.y = 1 / sqrt(6) * (pos3d.x + pos3d.y) - sqrt_2_3 * pos3d.z;
   return (point);
 }
 

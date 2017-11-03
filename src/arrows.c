@@ -9,6 +9,18 @@
 
 # define SHIFT	(frame->speed * frame->zoom)
 
+void		move_menu_cursor(int *cur, int max)
+{
+  if (key_released(sfKeyUp))
+    --*cur;
+  else if (key_released(sfKeyDown))
+    ++*cur;
+  if (*cur < 0)
+    *cur = max - 1;
+  else if (*cur >= max)
+    *cur = 0;
+}
+
 void		up_key(frame_t *frame)
 {
   float		coef;
