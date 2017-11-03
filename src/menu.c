@@ -38,7 +38,7 @@ static int	build_preview(preview_t *preview, t_sprite **cursor,
   preview->sprite.sprite = sfSprite_create();
   *cursor = create_sprite("sprites/cursor.png");
   *background = create_sprite("sprites/menu_background.png");
-  if (cursor == NULL || background == NULL || preview->pixels == NULL
+  if (*cursor == NULL || *background == NULL || preview->pixels == NULL
       || preview->sprite.sprite == NULL || preview->sprite.texture == NULL)
     return (-1);
   return (0);
@@ -70,8 +70,8 @@ int		menu(t_window *window, frame_t *frames, folder_t *folder)
     window_clear(window);
     put_sprite(window, background, xy_vectorf(0, 0));
     move_menu_cursor(&cur, folder->size);
-    position = xy_vectorf(50 + my_strlen(folder->filenames[cur]) * 15,
-	       50 + (window->height - 100) / folder->size * cur + 15);
+    position = xy_vectorf(40 + my_strlen(folder->filenames[cur]) * 15,
+	       50 + (window->height - 100) / folder->size * cur + 17);
     display_names(window, folder, cur);
     put_sprite(window, cursor, position);
     start_wireframe(window, &frames[cur]);

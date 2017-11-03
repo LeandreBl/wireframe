@@ -15,11 +15,11 @@ void            init_frame_settings(frame_t *frame)
 {
   frame->angle = 60;
   frame->zoom = 10;
-  frame->camera.y = frame->lines[frame->size / 2].size * frame->zoom / 2;
-  frame->camera.x = frame->size * frame->zoom / 2 + frame->camera.y;
+  frame->camera.y = frame->lines[frame->size / 2].size / 2 - 200;
+  frame->camera.x = 680 - frame->size / 2;
   frame->dots = NULL;
   frame->speed = 1;
-  frame->disp_view = PARA_PROJ;
+  frame->disp_view = ISO_PROJ;
 }
 
 static void	next_frame(frame_t *frames,
