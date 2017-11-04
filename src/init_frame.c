@@ -13,12 +13,12 @@
 
 void            init_frame_settings(frame_t *frame)
 {
-  frame->angle = 60;
-  frame->zoom = 10;
-  frame->camera.y = frame->lines[frame->size / 2].size / 2 - 200;
-  frame->camera.x = 680 - frame->size / 2;
+  frame->angle = DEFAULT_ANGLE;
+  frame->zoom = DEFAULT_ZOOM;
+  frame->camera.x = 640;
+  frame->camera.y = 360;
   frame->dots = NULL;
-  frame->speed = 1;
+  frame->speed = DEFAULT_SPEED;
   frame->disp_view = ISO_PROJ;
 }
 

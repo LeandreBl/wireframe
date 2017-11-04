@@ -5,7 +5,7 @@
 ** Login   <leandre.blanchard@epitech.eu>
 ** 
 ** Started on  Fri Mar 31 14:04:57 2017 Léandre Blanchard
-** Last update Fri Nov  3 01:58:14 2017 Léandre Blanchard
+** Last update Sat Nov  4 04:03:52 2017 Léandre Blanchard
 */
 
 #include "csfml.h"
@@ -16,15 +16,22 @@ void            window_clear(t_window *window)
 {
   sfRenderWindow_clear(window->window, sfWhite);
 }
+
+/* Updates the window from the pixels */
+void            window_update(t_window *window)
+{
+  sfTexture_updateFromPixels(window->texture, window->pixels,
+			     window->width, window->height, 0, 0);
+  sfRenderWindow_drawSprite(window->window, window->sprite, NULL);
+}
+
 /*
 ** refresh the window by displaying the sprites,
 ** and the pixels contained in window->pixels
 */
 void            window_refresh(t_window *window)
 {
-  sfTexture_updateFromPixels(window->texture, window->pixels,
-			     window->width, window->height, 0, 0);
-  sfRenderWindow_drawSprite(window->window, window->sprite, NULL);
+  window_update(window);
   sfRenderWindow_display(window->window);
 }
 

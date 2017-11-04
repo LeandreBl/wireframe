@@ -23,6 +23,7 @@ static void	init_tab(fct_t tab[])
   __add__(sfKeyPageUp, &tab[4], page_up);
   __add__(sfKeyPageDown, &tab[5], page_down);
   __add__(sfKeyX, &tab[6], change_proj);
+  __add__(sfKeyA, &tab[7], change_angle);
 }
 
 void		key_shortcuts(frame_t *frame)

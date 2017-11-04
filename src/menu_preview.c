@@ -11,6 +11,8 @@ static void	display_cols(preview_t *preview, frame_t *frame)
 {
   int		i;
   int		j;
+  sfVector2f	from;
+  sfVector2f	to;
 
   j = 0;
   i = 0;
@@ -19,14 +21,14 @@ static void	display_cols(preview_t *preview, frame_t *frame)
     i = 0;
     while (i < frame->size - 1)
     {
-      menu_line(preview, frame->dots[i][j], frame->dots[i + 1][j], sfWhite);
-      if (frame->dots[i][j].y > preview->height)
+      from = get_pos(i, j, frame);
+      to = get_pos(i + 1, j, frame);
+      menu_line(preview, from, to, sfWhite);
+      if (from.y > preview->height)
 	break;
-      if (frame->dots[i + 1][j].y < 0)
-	++i;
       ++i;
     }
-    ++j;
+    ++j;;
   }
 }
 
@@ -34,6 +36,8 @@ static void	display_lines(preview_t *preview, frame_t *frame)
 {
   int		i;
   int		j;
+  sfVector2f	from;
+  sfVector2f	to;
 
   i = 0;
   while (i < frame->size)
@@ -41,11 +45,11 @@ static void	display_lines(preview_t *preview, frame_t *frame)
     j = 0;
     while (j < frame->lines[i].size - 1)
     {
-      menu_line(preview, frame->dots[i][j], frame->dots[i][j + 1], sfWhite);
-      if (frame->dots[i][j].x > preview->width)
+      from = get_pos(i, j, frame);
+      to = get_pos(i, j + 1, frame);
+      menu_line(preview, from, to, sfWhite);
+      if (from.x > preview->width)
 	break;
-      if (frame->dots[i][j + 1].x < 0)
-	++j;
       ++j;
     }
     ++i;

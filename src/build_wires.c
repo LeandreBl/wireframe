@@ -41,9 +41,7 @@ static void	set_coordinates(frame_t *frame)
     x = 0;
     while (x < frame->lines[y].size)
     {
-      proj.x = x * frame->zoom + frame->camera.x;
-      proj.y = y * frame->zoom + frame->camera.y;
-      proj.z = frame->lines[y].line[x] * frame->zoom / 2;
+      proj = xyz_vector(x, y, frame->lines[y].line[x]);
       if (frame->disp_view == PARA_PROJ)
 	frame->dots[y][x] = my_para_proj(proj, frame->angle);
       if (frame->disp_view == ISO_PROJ)

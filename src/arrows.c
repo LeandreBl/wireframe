@@ -7,8 +7,6 @@
 
 #include "wireframe.h"
 
-# define SHIFT	(frame->speed * frame->zoom)
-
 void		move_menu_cursor(int *cur, int max)
 {
   if (key_released(sfKeyUp))
@@ -23,46 +21,20 @@ void		move_menu_cursor(int *cur, int max)
 
 void		up_key(frame_t *frame)
 {
-  float		coef;
-
-  coef = SHIFT;
-  frame->camera.x += coef;
-  frame->camera.y += coef;
+  frame->camera.y += frame->speed;
 }
 
 void		down_key(frame_t *frame)
 {
-  float		coef;
-
-  coef = SHIFT;
-  frame->camera.y -= coef;
-  frame->camera.x -= coef;
+  frame->camera.y -= frame->speed;
 }
 
 void		left_key(frame_t *frame)
 {
-  float		coef;
-
-  coef = SHIFT;
-  if (frame->disp_view == PARA_PROJ)
-    frame->camera.x += coef;
-  if (frame->disp_view == ISO_PROJ)
-  {
-    frame->camera.y -= coef / 2;
-    frame->camera.x += coef / 2;
-  }
+  frame->camera.x += frame->speed;
 }
 
 void		right_key(frame_t *frame)
 {
-  float		coef;
-
-  coef = SHIFT;
-  if (frame->disp_view == PARA_PROJ)
-    frame->camera.x -= coef;
-  if (frame->disp_view == ISO_PROJ)
-  {
-    frame->camera.y += coef / 2;
-    frame->camera.x -= coef / 2;
-  }
+  frame->camera.x -= frame->speed;
 }

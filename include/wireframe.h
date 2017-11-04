@@ -13,6 +13,9 @@
 # define NB_PROJ	(2)
 # define PARA_PROJ	(0)
 # define ISO_PROJ	(1)
+# define DEFAULT_SPEED	(10)
+# define DEFAULT_ZOOM	(10)
+# define DEFAULT_ANGLE	(60)
 # define FONT		("fonts/audims.ttf")
 
 # include "csfml.h"
@@ -50,7 +53,7 @@ struct			preview_s
   t_sprite		sprite;
 };
 
-# define SHORTCUTS	(7)
+# define SHORTCUTS	(8)
 
 struct			fct_s
 {
@@ -81,6 +84,7 @@ void		key_shortcuts(frame_t *frame);
 void		move_menu_cursor(int *cur, int max);
 void		free_menu(preview_t *preview, t_sprite *background,
 			  t_sprite *cursor);
+sfVector2f	get_pos(int i, int j, frame_t *frame);
 
 /* Function pointers */
 void		up_key(frame_t *frame);
@@ -90,5 +94,6 @@ void            right_key(frame_t *frame);
 void		page_up(frame_t *frame);
 void		page_down(frame_t *frame);
 void		change_proj(frame_t *frame);
+void		change_angle(frame_t *frame);
 
 #endif /* !WIREFRAME_H_ */

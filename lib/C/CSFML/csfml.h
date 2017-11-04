@@ -5,7 +5,7 @@
 ** Login   <leandre.blanchard@epitech.eu>
 ** 
 ** Started on  Fri Mar 31 13:58:23 2017 Léandre Blanchard
-** Last update Fri Nov  3 02:00:02 2017 Léandre Blanchard
+** Last update Sat Nov  4 04:04:19 2017 Léandre Blanchard
 */
 
 #ifndef MY_CSFML_H_
@@ -96,6 +96,8 @@ int		is_in_rect(t_window *window, sfVector2f origin, sfVector2f size);
 void		window_clear(t_window *window);
 
 int		key_released(int key);
+
+void		window_update(t_window *window);
 
 void		window_refresh(t_window *window);
 

@@ -18,12 +18,14 @@ static void			sadd_int(char *src, int nb)
   i = 0;
   size = my_intlen(nb);
   len = my_strlen(src);
+  if (nb == 0)
+    src[len] = '0';
   if (nb < 0)
   {
     src[len] = '-';
     nb = -nb;
   }
-  while (nb != 0)
+  while (nb > 0)
   {
     src[len + size - i - 1] = 48 + nb % 10;
     nb /= 10;
