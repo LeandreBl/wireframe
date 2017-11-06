@@ -38,7 +38,6 @@ char				*add_number(char *src, va_list *va)
   int				nb;
 
   nb = va_arg(*va, int);
-  src = my_frealloc(src, my_intlen(nb) + 1);
   if (src == NULL)
     return (NULL);
   if (nb == 0)
@@ -59,7 +58,6 @@ char				*add_float(char *src, va_list *va)
   dec = (int)((nb - ent) * 1000000000);
   while (dec % 10 == 0 && dec != 0)
     dec /= 10;
-  src = my_frealloc(src, my_intlen(ent) + my_intlen(dec) + 2);
   if (src == NULL)
     return (NULL);
   sadd_int(src, ent);
