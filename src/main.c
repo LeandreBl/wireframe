@@ -27,7 +27,7 @@ int		main(int ac, char **av)
   folder.folder = av[1];
   if (create_frames(&frames, &folder) == -1)
   {
-    mdprintf(2, "%sError : Could not create frames%s\n", BOLDRED, RESET);
+    mdprintf(2, "[%sError%s] : Could not create frames\n", BOLDRED, RESET);
     free_tab(&folder.filenames);
     free_window(window);
     return (-1);

@@ -5,7 +5,7 @@
 ** Login   <leandre.blanchard@epitech.eu>
 ** 
 ** Started on  Sat Sep 16 15:39:05 2017 Léandre Blanchard
-** Last update Wed Nov  1 18:19:58 2017 Léandre Blanchard
+** Last update Tue Nov  7 23:47:52 2017 Léandre Blanchard
 */
 
 #include <sys/types.h>
@@ -21,12 +21,18 @@ char		**dir_filenames(const char *dirname, int sort)
   struct dirent	*dirent;
 
   filenames = NULL;
-  if ((directory = opendir(dirname)) == NULL)
+  directory = opendir(dirname);
+  if (directory == NULL)
     return (NULL);
   while ((dirent = readdir(directory)) != NULL)
+  {
     if (dirent->d_type == DT_REG)
-      if ((filenames = tab_append(filenames, my_strdup(dirent->d_name))) == NULL)
+    {
+      filenames = tab_append(filenames, my_strdup(dirent->d_name));
+      if (filenames == NULL)
 	return (NULL);
+    }
+  }
   closedir(directory);
   if (sort)
     sort_tab(filenames);

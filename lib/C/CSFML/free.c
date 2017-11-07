@@ -5,7 +5,7 @@
 ** Login   <leandre.blanchard@epitech.eu>
 ** 
 ** Started on  Wed Apr  5 14:48:58 2017 Léandre Blanchard
-** Last update Tue Nov  7 22:24:59 2017 Léandre Blanchard
+** Last update Tue Nov  7 23:38:00 2017 Léandre Blanchard
 */
 
 #include "csfml.h"
@@ -97,10 +97,8 @@ void            free_window(window_t *window)
     {
       if (window->window != NULL)
 	sfRenderWindow_destroy(window->window);
-      if (window->pixels != NULL)
-	sfree(&window->pixels);
-      if (window->font != NULL)
-	sfree(&window->font);
+      sfree(&window->pixels);
+      sfree(&window->font);
       free_musics(window->musics);
       if (window->frame != NULL)
       {

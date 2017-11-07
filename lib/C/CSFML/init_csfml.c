@@ -5,7 +5,7 @@
 ** Login   <leandre.blanchard@epitech.eu>
 ** 
 ** Started on  Fri Mar 31 14:24:11 2017 Léandre Blanchard
-** Last update Tue Nov  7 22:41:16 2017 Léandre Blanchard
+** Last update Tue Nov  7 23:46:38 2017 Léandre Blanchard
 */
 
 #include "csfml.h"
@@ -65,7 +65,6 @@ window_t		*init_window(int height, float dim, char *name, int bar)
   window->window = create_window(name,
 				 window->width, window->height, bar);
   window->frame = my_calloc(sizeof(sprite_t));
-  window->pixels = pixels_buffer(window->width, window->height);
   if (!window->pixels || !window->window || !window->pixels)
   {
     mdprintf(2, "[%sError%s] : Failed to create %s CSFML window\n",

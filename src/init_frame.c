@@ -68,8 +68,8 @@ int		create_frames(frame_t **frames, folder_t *folder)
   folder->filenames = dir_filenames(folder->folder, 1);
   if (folder->filenames == NULL)
   {
-    mdprintf(2, "%sError : Could not open %s%s\n", BOLDRED,
-	     folder->folder, RESET);
+    mdprintf(2, "[%sError%s] : Could not open %s\n", BOLDRED, RESET,
+	     folder->folder);
     return (-1);
   }
   mprintf("[%sGenerating frames%s]\n", BOLDGREEN, RESET);
