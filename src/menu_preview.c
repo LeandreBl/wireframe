@@ -28,7 +28,7 @@ static void	display_cols(preview_t *preview, frame_t *frame)
 	break;
       ++i;
     }
-    ++j;;
+    ++j;
   }
 }
 
@@ -56,7 +56,7 @@ static void	display_lines(preview_t *preview, frame_t *frame)
   }
 }
 
-int		display_preview(t_window *window, preview_t *preview,
+int		display_preview(window_t *window, preview_t *preview,
 				frame_t *frame)
 {
   display_cols(preview, frame);

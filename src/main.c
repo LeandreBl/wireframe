@@ -13,7 +13,7 @@
 
 int		main(int ac, char **av)
 {
-  t_window	*window;
+  window_t	*window;
   folder_t	folder;
   frame_t	*frames;
 

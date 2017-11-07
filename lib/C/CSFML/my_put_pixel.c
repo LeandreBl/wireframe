@@ -5,7 +5,7 @@
 ** Login   <leandre.blanchard@epitech.eu>
 ** 
 ** Started on  Fri Mar 31 13:56:13 2017 Léandre Blanchard
-** Last update Fri Nov  3 02:58:24 2017 Léandre Blanchard
+** Last update Tue Nov  7 22:22:42 2017 Léandre Blanchard
 */
 
 #include "csfml.h"
@@ -15,16 +15,19 @@
 ** at coordinates (x, y) with RGBA color "color"
 ** return -1 on error
 */
-int		my_put_pixel(t_window *window, int x, int y, sfColor color)
+int		my_put_pixel(window_t *window, int x, int y, sfColor color)
 {
+  int		offset;
+
   if (x < 0 || y < 0)
     return (-1);
   if (x >= window->width || y >= window->height)
     return (-1);
-  window->pixels[(window->width * y + x) * 4 + 0] = color.r;
-  window->pixels[(window->width * y + x) * 4 + 1] = color.g;
-  window->pixels[(window->width * y + x) * 4 + 2] = color.b;
-  window->pixels[(window->width * y + x) * 4 + 3] = color.a;
+  offset = (window->width * y + x) * 4;
+  window->pixels[offset + 0] = color.r;
+  window->pixels[offset + 1] = color.g;
+  window->pixels[offset + 2] = color.b;
+  window->pixels[offset + 3] = color.a;
   return (0);
 }
 /*
@@ -44,7 +47,7 @@ static void	swaper(sfVector2f *from, sfVector2f *to)
 /*
 ** Draw a line from "from" to "to" with sfColor "color"
 */
-void		my_draw_line(t_window *window, sfVector2f from,
+void		my_draw_line(window_t *window, sfVector2f from,
 			     sfVector2f to, sfColor color)
 {
   sfVector2f    xy;

@@ -20,7 +20,7 @@ sfVector2f		get_pos(int i, int j, frame_t *frame)
   return (pos);
 }
 
-static void	display_cols(t_window *window, frame_t *frame)
+static void	display_cols(window_t *window, frame_t *frame)
 {
   int		i;
   int		j;
@@ -43,11 +43,11 @@ static void	display_cols(t_window *window, frame_t *frame)
 	++i;
       ++i;
     }
-    ++j;;
+    ++j;
   }
 }
 
-static void	display_lines(t_window *window, frame_t *frame)
+static void	display_lines(window_t *window, frame_t *frame)
 {
   int		i;
   int		j;
@@ -73,7 +73,7 @@ static void	display_lines(t_window *window, frame_t *frame)
   }
 }
 
-int		display_wireframe(t_window *window, frame_t *frame)
+int		display_wireframe(window_t *window, frame_t *frame)
 {
   sfColor	color;
   char		*hud;
@@ -90,7 +90,8 @@ int		display_wireframe(t_window *window, frame_t *frame)
     display_cols(window, frame);
     display_lines(window, frame);
     window_update(window);
-    hud = catalloc("Angle : %f deg.\nSpeed : %f\nCamera : (%f, %f)\nZoom : %fx\nMap : [%d x %d]",
+    hud = catalloc("Angle : %f deg.\nSpeed : %f\nCamera : (%f, \
+%f)\nZoom : %fx\nMap : [%d x %d]",
 		   frame->angle, frame->speed, frame->camera.x,
 		   frame->camera.y, frame->zoom / DEFAULT_ZOOM,
 		   frame->size, frame->lines[0].size);

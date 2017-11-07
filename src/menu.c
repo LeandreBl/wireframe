@@ -10,7 +10,7 @@
 #include "my.h"
 #include "defines.h"
 
-static void	display_names(t_window *window, folder_t *folder, int cur)
+static void	display_names(window_t *window, folder_t *folder, int cur)
 {
   int		i;
   sfVector2f	pos;
@@ -28,8 +28,8 @@ static void	display_names(t_window *window, folder_t *folder, int cur)
   }
 }
 
-static int	build_preview(preview_t *preview, t_sprite **cursor,
-			      t_sprite **background, t_window *window)
+static int	build_preview(preview_t *preview, sprite_t **cursor,
+			      sprite_t **background, window_t *window)
 {
   preview->width = window->width;
   preview->height = window->height;
@@ -44,7 +44,7 @@ static int	build_preview(preview_t *preview, t_sprite **cursor,
   return (0);
 }
 
-static void	start_wireframe(t_window *window, frame_t *frame)
+static void	start_wireframe(window_t *window, frame_t *frame)
 {
   if (key_released(sfKeyReturn))
   {
@@ -53,12 +53,12 @@ static void	start_wireframe(t_window *window, frame_t *frame)
   }
 }
 
-int		menu(t_window *window, frame_t *frames, folder_t *folder)
+int		menu(window_t *window, frame_t *frames, folder_t *folder)
 {
   int		cur;
   sfVector2f	position;
-  t_sprite	*cursor;
-  t_sprite	*background;
+  sprite_t	*cursor;
+  sprite_t	*background;
   preview_t	preview;
 
   if (build_preview(&preview, &cursor, &background, window) == -1)

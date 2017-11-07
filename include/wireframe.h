@@ -50,7 +50,7 @@ struct			preview_s
   int			width;
   int			height;
   sfUint8		*pixels;
-  t_sprite		sprite;
+  sprite_t		sprite;
 };
 
 # define SHORTCUTS	(8)
@@ -74,16 +74,16 @@ int		parse_file(char **file, frame_t *frame);
 sfVector2f	my_para_proj(sfVector3f pos3d, float angle);
 sfVector2f	my_iso_proj(sfVector3f pos3d);
 int		fill_3d_coordinates(frame_t *frame);
-int		display_wireframe(t_window *window, frame_t *frame);
-int		display_preview(t_window *window, preview_t *preview,
+int		display_wireframe(window_t *window, frame_t *frame);
+int		display_preview(window_t *window, preview_t *preview,
 				frame_t *frame);
 void		menu_line(preview_t *preview, sfVector2f from,
 			  sfVector2f to, sfColor color);
-int		menu(t_window *window, frame_t *frame, folder_t *folder);
+int		menu(window_t *window, frame_t *frame, folder_t *folder);
 void		key_shortcuts(frame_t *frame);
 void		move_menu_cursor(int *cur, int max);
-void		free_menu(preview_t *preview, t_sprite *background,
-			  t_sprite *cursor);
+void		free_menu(preview_t *preview, sprite_t *background,
+			  sprite_t *cursor);
 sfVector2f	get_pos(int i, int j, frame_t *frame);
 
 /* Function pointers */

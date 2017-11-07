@@ -51,7 +51,7 @@ void		free_frames(frame_t *frames, int size)
 }
 
 void		free_menu(preview_t *preview,
-			  t_sprite *background, t_sprite *cursor)
+			  sprite_t *background, sprite_t *cursor)
 {
   free_sprite(cursor);
   free_sprite(background);

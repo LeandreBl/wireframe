@@ -12,13 +12,13 @@
 
 /*
 ** This function allows you to write text on your screen
-** using t_window, it will get the font of t_window->font
+** using window_t, it will get the font of window_t->font
 ** and display the word "word" at coordinates "pos"
 ** with color "color"
 ** This function does not return
 */
 void            put_word(char *word, sfVector2f pos,
-			 t_window *window, sfColor color)
+			 window_t *window, sfColor color)
 {
   sfFont        *font;
   sfText        *text;
@@ -43,7 +43,7 @@ void            put_word(char *word, sfVector2f pos,
 ** then printing it on the screen
 */
 void            put_number(int nb, sfVector2f pos,
-			   t_window *window, sfColor color)
+			   window_t *window, sfColor color)
 {
   char          *str;
 

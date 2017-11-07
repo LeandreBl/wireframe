@@ -11,11 +11,11 @@
 #include "csfml.h"
 
 /*
-** This function refresh the position of the mouse in t_window->mouse
+** This function refresh the position of the mouse in window_t->mouse
 ** and return 0 if the mouse is located in the rectangle 
 ** of size size.x * size.y who upper-left corner is at (origin.x, origin.y)
 */
-int		is_in_rect(t_window *window, sfVector2f origin, sfVector2f size)
+int		is_in_rect(window_t *window, sfVector2f origin, sfVector2f size)
 {
   pos_mouse(window);
   if (window->mouse.x >= origin.x && window->mouse.x <= (origin.x + size.x)

@@ -13,7 +13,7 @@ MAKE		= make -C
 
 LIB		= -L./lib/C -lmy
 LIB		+= -lmy_csfml
-LIB		+= -lc_graph_prog_full
+LIB		+= -lcsfml-graphics -lcsfml-window -lcsfml-system -lcsfml-audio
 LIB		+= -lm
 
 SRCS		= src/main.c

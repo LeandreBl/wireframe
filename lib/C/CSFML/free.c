@@ -5,7 +5,7 @@
 ** Login   <leandre.blanchard@epitech.eu>
 ** 
 ** Started on  Wed Apr  5 14:48:58 2017 Léandre Blanchard
-** Last update Wed Nov  1 20:32:56 2017 Léandre Blanchard
+** Last update Tue Nov  7 22:24:59 2017 Léandre Blanchard
 */
 
 #include "csfml.h"
@@ -18,7 +18,7 @@
 ** only frees the texture, and then all the sprites
 ** replace the freed pointers by NULL
 */
-void		free_sprites_only(t_sprite **sprites)
+void		free_sprites_only(sprite_t **sprites)
 {
   int		i;
 
@@ -36,10 +36,10 @@ void		free_sprites_only(t_sprite **sprites)
     }
 }
 /*
-** Entirely free a t_sprite ** using a call to free_sprite
+** Entirely free a sprite_t ** using a call to free_sprite
 ** and replace the ptr freed, by NULL
 */
-void		free_sprites(t_sprite **sprites)
+void		free_sprites(sprite_t **sprites)
 {
   int		i;
 
@@ -74,9 +74,9 @@ void		free_musics(sfMusic **musics)
     }
 }
 /*
-** Free a single t_sprite, then replace it by NULL
+** Free a single sprite_t, then replace it by NULL
 */
-void            free_sprite(t_sprite *sprite)
+void            free_sprite(sprite_t *sprite)
 {
   if (sprite != NULL)
     {
@@ -89,9 +89,9 @@ void            free_sprite(t_sprite *sprite)
 }
 /*
 ** Using a lot of calls to above fonctions,
-** frees the whole t_window structure
+** frees the whole window_t structure
 */
-void            free_window(t_window *window)
+void            free_window(window_t *window)
 {
   if (window != NULL)
     {
@@ -102,10 +102,12 @@ void            free_window(t_window *window)
       if (window->font != NULL)
 	sfree(&window->font);
       free_musics(window->musics);
-      if (window->texture != NULL)
-	sfTexture_destroy(window->texture);
-      if (window->sprite != NULL)
-	sfSprite_destroy(window->sprite);
+      if (window->frame != NULL)
+      {
+	sfTexture_destroy(window->frame->texture);
+	sfSprite_destroy(window->frame->sprite);
+      }
+      sfree(&window->frame);
       sfree(&window);
     }
 }
