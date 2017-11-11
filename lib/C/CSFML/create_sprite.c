@@ -5,7 +5,7 @@
 ** Login   <leandre.blanchard@epitech.eu>
 ** 
 ** Started on  Sun Apr  2 12:20:16 2017 Léandre Blanchard
-** Last update Tue Nov  7 22:37:04 2017 Léandre Blanchard
+** Last update Sat Nov 11 15:16:08 2017 Léandre Blanchard
 */
 
 #include "csfml.h"
@@ -19,6 +19,11 @@
 */
 void			put_sprite(window_t *window, sprite_t *sprite, sfVector2f pos)
 {
+  if (sprite == NULL || sprite->sprite == NULL || sprite->texture == NULL)
+  {
+    mdprintf(2, "[%sWarning%s] PutSprite : NULL sprite\n", GREEN, RESET);
+    return;
+  }
   sfSprite_setPosition(sprite->sprite, pos);
   sfSprite_setScale(sprite->sprite, xy_vectorf(1, 1));
   sfRenderWindow_drawSprite(window->window, sprite->sprite, NULL);
