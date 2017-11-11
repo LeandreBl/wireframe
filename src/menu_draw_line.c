@@ -45,7 +45,7 @@ void		menu_line(preview_t *preview, sfVector2f from,
   swaper(&from, &to);
   a = (to.y - from.y) / (to.x - from.x);
   b = from.y - (a * from.x);
-  xy.x = from.x;
+  xy = from;
   while (xy.x < to.x)
   {
     xy.y = a * xy.x + b;
